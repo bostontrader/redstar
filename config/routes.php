@@ -54,6 +54,10 @@ Router::scope('/', function ($routes) {
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
+    $routes->resources('Orders');
+    $routes->connect('/orders/add', ['controller' => 'orders', 'action' => 'add']);
+    $routes->connect('/orders/edit/*', ['controller' => 'orders', 'action' => 'edit']);
+
     /**
      * Connect catchall routes for all controllers.
      *
@@ -70,7 +74,7 @@ Router::scope('/', function ($routes) {
      * You can remove these routes once you've connected the
      * routes you want in your application.
      */
-    $routes->fallbacks('DashedRoute');
+    //$routes->fallbacks('DashedRoute');
 });
 
 /**
