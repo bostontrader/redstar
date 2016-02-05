@@ -58,6 +58,10 @@ Router::scope('/', function ($routes) {
     $routes->connect('/orders/add', ['controller' => 'orders', 'action' => 'add']);
     $routes->connect('/orders/edit/*', ['controller' => 'orders', 'action' => 'edit']);
 
+    $routes->resources('Traders');
+    $routes->connect('/traders/add', ['controller' => 'traders', 'action' => 'add']);
+    $routes->connect('/traders/edit/*', ['controller' => 'traders', 'action' => 'edit']);
+
     /**
      * Connect catchall routes for all controllers.
      *

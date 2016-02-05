@@ -18,4 +18,5 @@ namespace App\Test\Fixture;
 
 class FixtureConstants {
     const orderTypical = 1;
+    const traderTypical = 1;
 }
