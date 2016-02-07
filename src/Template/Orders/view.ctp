@@ -3,6 +3,7 @@
     <nav class="large-3 medium-4 columns" id="actions-sidebar">
         <ul class="side-nav">
             <li class="heading"><?= __('Actions') ?></li>
+            <li><?= $this->Html->link(__('Sides'), ['controller' => 'sides', 'book_id' => $book->id, '_method'=>'GET'], ['id'=>'BookSides']) ?></li>
         </ul>
     </nav>
     <div class="orders view large-9 medium-8 columns content">
