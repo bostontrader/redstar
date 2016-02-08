@@ -62,6 +62,7 @@ Router::scope('/', function ($routes) {
 
     $routes->connect('/orders/add', ['controller' => 'orders', 'action' => 'add']);
     $routes->connect('/orders/edit/*', ['controller' => 'orders', 'action' => 'edit']);
+    $routes->connect('/orders/market', ['controller' => 'orders', 'action' => 'market']);
 
     $routes->resources('Tradeables');
     $routes->connect('/tradeables/add', ['controller' => 'tradeables', 'action' => 'add']);

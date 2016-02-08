@@ -7,6 +7,6 @@ class OrdersTable extends Table {
 
     public function initialize(array $config) {
         parent::initialize($config);
-        $this->hasMany('Sides');
+        $this->belongsTo('Traders');
     }
 }

@@ -53,12 +53,26 @@ class OrdersController extends AppController {
 
     public function index() {
         $this->request->allowMethod(['get']);
-        $this->set('orders', $this->Orders->find());
+        $this->set('orders', $this->Orders->find()->contain('Traders'));
+    }
+
+    public function market() {
+        $this->request->allowMethod(['get']);
+
+        $sellSides=$this->Orders->find()
+            ->where(['have_id'=>2])
+            ->andWhere(['want_id'=>1]);
+
+        $buySides=$this->Orders->find()
+            ->where(['have_id'=>1])
+            ->andWhere(['want_id'=>2]);
+
+        $this->set(compact('buySides','sellSides'));
     }
 
     public function view($id = null) {
         $this->request->allowMethod(['get']);
-        $order = $this->Orders->get($id);
+        $order = $this->Orders->get($id,['contain'=>'Traders']);
         $this->set('order', $order);
     }
 }
