@@ -165,17 +165,17 @@ class DMIntegrationTestCase extends IntegrationTestCase {
      * @param String $css_finder A css finder string to find a region of the html to search for
      * Atags.
      */
-    protected function expectedInputsSelectsAtagsFound($unknownInputCnt, $unknownSelectCnt, $html, $css_finder) {
-        $this->assertEquals(0, $unknownInputCnt);
-        $this->assertEquals(0, $unknownSelectCnt);
+    //protected function expectedInputsSelectsAtagsFound($unknownInputCnt, $unknownSelectCnt, $html, $css_finder) {
+        //$this->assertEquals(0, $unknownInputCnt);
+        //$this->assertEquals(0, $unknownSelectCnt);
 
         // Examine the <A> tags on this page.  There should be zero links.
         /* @var \simple_html_dom_node $content */
-        $content = $html->find($css_finder,0);
-        $this->assertNotNull($content);
-        $links = $content->find('a');
-        $this->assertEquals(0,count($links));
-    }
+        //$content = $html->find($css_finder,0);
+        //$this->assertNotNull($content);
+        //$links = $content->find('a');
+        //$this->assertEquals(0,count($links));
+    //}
 
     /**
      * A. The input has a given id, is of some given type, and has a specified value.

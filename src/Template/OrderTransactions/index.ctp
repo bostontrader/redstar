@@ -8,7 +8,7 @@
     <nav class="large-3 medium-4 columns" id="actions-sidebar">
         <ul class="side-nav">
             <li class="heading"><?= __('Actions') ?></li>
-            <li><?= $this->Html->link(__('New Side'), ['order_id'=>$order_id,'action'=>'add','_method'=>'GET'],['id'=>'SideAdd']) ?></li>
+            <li><?php // $this->Html->link(__('New Side'), ['order_id'=>$order_id,'action'=>'add','_method'=>'GET'],['id'=>'SideAdd']) ?></li>
         </ul>
     </nav>
     <div class="sides index large-9 medium-8 columns content">
@@ -23,14 +23,14 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($sides as $side): ?>
+                <?php foreach ($order_transactions as $order_transaction): ?>
                 <tr>
-                    <td><?= $side->havewant ?></td>
-                    <td><?= $side->tradeable->title ?></td>
-                    <td><?= $side->quantity ?></td>
+                    <td><?= $order_transaction->mra ?></td>
+                    <td><?= $order_transaction->have_quantity ?></td>
+                    <td><?= $order_transaction->want_quantity ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['order_id'=>$order_id,'action'=>'view','id'=>$side->id,'_method'=>'GET'],['name'=>'SideView']) ?>
-                        <?= $this->Html->link(__('Edit'), ['order_id'=>$order_id,'action'=>'edit', $side->id, '_method'=>'GET'],['name'=>'SideEdit']) ?>
+                        <?php // $this->Html->link(__('View'), ['order_id'=>$order_id,'action'=>'view','id'=>$side->id,'_method'=>'GET'],['name'=>'SideView']) ?>
+                        <?php // $this->Html->link(__('Edit'), ['order_id'=>$order_id,'action'=>'edit', $side->id, '_method'=>'GET'],['name'=>'SideEdit']) ?>
                         <?php //$this->Form->postLink(__('Delete'), ['action' => 'delete', $side->id], ['name'=>'SideDelete','confirm' => __('Are you sure you want to delete # {0}?', $side->id)]) ?>
                     </td>
                 </tr>

@@ -9,10 +9,6 @@
     <div class="orders view large-9 medium-8 columns content">
         <h3><?= h($order->id) ?></h3>
         <table id="OrderViewTable" class="vertical-table">
-            <tr id="datetime">
-                <th><?= __('Datetime') ?></th>
-                <td><?= $order->datetime ?></td>
-            </tr>
             <tr id="trader">
                 <th><?= __('Trader') ?></th>
                 <td><?= $order->trader->nickname ?></td>

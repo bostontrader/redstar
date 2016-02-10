@@ -55,9 +55,9 @@ Router::scope('/', function ($routes) {
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
     $routes->resources('Orders', function ($routes) {
-        $routes->resources('Sides');
-        $routes->connect('/sides/add', ['controller'=>'sides','action'=>'add']);
-        $routes->connect('/sides/edit/*', ['controller'=>'sides','action'=>'edit']);
+        $routes->resources('OrderTransactions');
+        //$routes->connect('/order_transactions/add', ['controller'=>'sides','action'=>'add']);
+        //$routes->connect('/sides/edit/*', ['controller'=>'sides','action'=>'edit']);
     });
 
     $routes->connect('/orders/add', ['controller' => 'orders', 'action' => 'add']);

@@ -3,10 +3,11 @@ namespace App\Model\Table;
 
 use Cake\ORM\Table;
 
-class OrderTransactionsTable extends Table {
+class TradersTable extends Table {
 
     public function initialize(array $config) {
         parent::initialize($config);
-        $this->belongsTo('Orders');
+        $this->hasMany('Orders');
+        $this->displayField('nickname');
     }
 }
