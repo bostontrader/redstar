@@ -238,52 +238,8 @@ class OrdersControllerTest extends DMIntegrationTestCase {
         $this->assertEquals(0, $unknownATag);
     }
 
-    public function testGET_view() {
 
-        /* @var \simple_html_dom_node $content */
-        /* @var \simple_html_dom_node $field */
-        /* @var \simple_html_dom_node $table */
-
-        // 1. Obtain a record to view, login, GET the url, parse the response and send it back.
-        $order_id=FixtureConstants::orderTypical;
-        $order=$this->Orders->get($order_id);
-        $url='/orders/' . $order_id;
-        $html=$this->loginRequestResponse(null, $url); // no login
-
-        // 2. Verify the <A> tags
-        // 2.1 Get the count of all <A> tags that are presently unaccounted for.
-        $content = $html->find('div#OrdersView',0);
-        $this->assertNotNull($content);
-        $unknownATag = count($content->find('a'));
-
-        // 2.2 Look for specific tags
-        //$this->assertEquals(1, count($html->find('a#OrderAccounts')));
-        //$unknownATag--;
-        //$this->assertEquals(1, count($html->find('a#OrderTransactions')));
-        //$unknownATag--;
-
-        // 2.3. Ensure that all the <A> tags have been accounted for
-        $this->assertEquals(0, $unknownATag);
-
-        // 3.  Look for the table that contains the view fields.
-        $table = $html->find('table#OrderViewTable',0);
-        $this->assertNotNull($table);
-
-        // 4. Now inspect the fields on the form.  We want to know that:
-        // A. The correct fields are there and no other fields.
-        // B. The fields have correct values.
-        //
-        //  The actual order that the fields are listed is hereby deemed unimportant.
-
-        // This is the count of the table rows that are presently unaccounted for.
-        $unknownRowCnt = count($table->find('tr'));
-
-        // 4.1 datetime
-        $field = $table->find('tr#datetime td',0);
-        $this->assertEquals($order['datetime'], $field->plaintext);
-        $unknownRowCnt--;
-
-        // 4.9 Have all the rows been accounted for?  Are there any extras?
-        $this->assertEquals(0, $unknownRowCnt);
-    }
+    // We don't want to 'view' an Order here.  An Order, all by itself is too uninteresting to look
+    // at, but if we want to see all the OrderTransactions, that's a job for OrderTransactions.index.
+    //public function testGET_view() {}
 }

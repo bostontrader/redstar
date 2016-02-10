@@ -12,13 +12,29 @@
         </ul>
     </nav>
     <div class="sides index large-9 medium-8 columns content">
-        <h4><header><?= __('Sides for Order : '.$order_id) ?></header></h4>
-        <table id="SidesTable" cellpadding="0" cellspacing="0">
+        <h4><header><?= __('Transactions for Order : '.$order_id) ?></header></h4>
+
+        <table id="OrderViewTable" class="vertical-table">
+            <tr id="trader_nickname">
+                <th><?= __('Trader') ?></th>
+                <td><?= $order[0]['nickname'] ?></td>
+            </tr>
+            <tr id="have_title">
+                <th><?= __('Have') ?></th>
+                <td><?= $order[0]['have_title'] ?></td>
+            </tr>
+            <tr id="want_title">
+                <th><?= __('Want') ?></th>
+                <td><?= $order[0]['want_title'] ?></td>
+            </tr>
+        </table>
+
+        <table id="OrderTransactionsTable" cellpadding="0" cellspacing="0">
             <thead>
                 <tr>
-                    <th id="havewant" ><?= __('Note') ?></th>
-                    <th id="tradeable" ><?= __('Tradeable') ?></th>
-                    <th id="quantity" ><?= __('Quantity') ?></th>
+                    <th id="mra" ><?= __('Most Recent Activity') ?></th>
+                    <th id="have_quantity" ><?= __('Have Quantity') ?></th>
+                    <th id="want_quantity" ><?= __('Want Quantity') ?></th>
                     <th id="actions" class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
