@@ -22,8 +22,8 @@
             <tbody>
                 <?php foreach ($sellSides as $order): ?>
                 <tr>
-                    <td><?= $order->have_quantity ?></td>
-                    <td><?= $order->want_quantity/$order->have_quantity  ?></td>
+                    <td><?= $this->Number->precision($order['have_quantity'],2); ?></td>
+                    <td><?= $this->Number->precision($order['want_quantity']/$order['have_quantity'],3);  ?></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -39,8 +39,8 @@
             <tbody>
             <?php foreach ($buySides as $order): ?>
                 <tr>
-                    <td><?= $order->want_quantity ?></td>
-                    <td><?= $order->have_quantity/$order->want_quantity  ?></td>
+                    <td><?= $this->Number->precision($order['want_quantity'],2); ?></td>
+                    <td><?= $this->Number->precision($order['have_quantity']/$order['want_quantity'],3);  ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

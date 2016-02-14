@@ -72,6 +72,8 @@ Router::scope('/', function ($routes) {
     $routes->connect('/traders/add', ['controller' => 'traders', 'action' => 'add']);
     $routes->connect('/traders/edit/*', ['controller' => 'traders', 'action' => 'edit']);
 
+    $routes->connect('/market', ['controller' => 'market', 'action' => 'market']);
+
     /**
      * Connect catchall routes for all controllers.
      *
