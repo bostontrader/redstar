@@ -2,6 +2,7 @@
 /**
  * @var \Cake\ORM\Table $traders
  */
+$this->Breadcrumb->makeTrail('Traders',$this->Html);
 ?>
 <div id="TradersIndex">
     <nav class="large-3 medium-4 columns" id="actions-sidebar">

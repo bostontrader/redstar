@@ -1,4 +1,7 @@
-<?php  /* @var \Cake\ORM\Entity $trader */ ?>
+<?php
+/* @var \Cake\ORM\Entity $trader */
+$this->Breadcrumb->makeTrail($trader->nickname,$this->Html);
+?>
 <div id="TradersView">
     <nav class="large-3 medium-4 columns" id="actions-sidebar">
         <ul class="side-nav">
