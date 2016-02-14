@@ -11,6 +11,7 @@
         <fieldset>
             <legend><?= __('Add Tradeable') ?></legend>
             <?php
+                echo $this->Form->input('symbol',['id'=>'TradeableSymbol']);
                 echo $this->Form->input('title',['id'=>'TradeableTitle']);
             ?>
         </fieldset>

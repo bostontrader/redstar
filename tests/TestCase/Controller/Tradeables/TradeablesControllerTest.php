@@ -51,7 +51,10 @@ class TradeablesControllerTest extends DMIntegrationTestCase {
         // 3.2 Look for the hidden POST input
         if($this->lookForHiddenInput($form)) $unknownInputCnt--;
 
-        // 3.3 Ensure that there's an input field for title, of type text, and that it is empty
+        // 3.3 Ensure that there's an input field for symbol, of type text, and that it is empty
+        if($this->inputCheckerA($form,'input#TradeableTitle')) $unknownInputCnt--;
+        
+        // 3.4 Ensure that there's an input field for title, of type text, and that it is empty
         if($this->inputCheckerA($form,'input#TradeableTitle')) $unknownInputCnt--;
 
         // 4. Have all the input, select, and Atags been accounted for?
@@ -70,6 +73,7 @@ class TradeablesControllerTest extends DMIntegrationTestCase {
         );
 
         // 2. Now validate that record.
+        $this->assertEquals($fromDbRecord['symbol'],$fixtureRecord['symbol']);
         $this->assertEquals($fromDbRecord['title'],$fixtureRecord['title']);
     }
 
@@ -109,7 +113,11 @@ class TradeablesControllerTest extends DMIntegrationTestCase {
         // 3.2 Look for the hidden POST input
         if($this->lookForHiddenInput($form,'_method','PUT')) $unknownInputCnt--;
 
-        // 3.3 Ensure that there's an input field for title, of type text, that is correctly set
+        // 3.3 Ensure that there's an input field for symbol, of type text, that is correctly set
+        if($this->inputCheckerA($form,'input#TradeableSymbol',
+            $tradeable['symbol'])) $unknownInputCnt--;
+
+        // 3.4 Ensure that there's an input field for title, of type text, that is correctly set
         if($this->inputCheckerA($form,'input#TradeableTitle',
             $tradeable['title'])) $unknownInputCnt--;
 
@@ -131,6 +139,7 @@ class TradeablesControllerTest extends DMIntegrationTestCase {
         );
 
         // 2. Now validate that record.
+        $this->assertEquals($fromDbRecord['symbol'],$fixtureRecord['symbol']);
         $this->assertEquals($fromDbRecord['title'],$fixtureRecord['title']);
     }
 
@@ -164,10 +173,11 @@ class TradeablesControllerTest extends DMIntegrationTestCase {
         $thead = $table->find('thead',0);
         $thead_ths = $thead->find('tr th');
 
-        $this->assertEquals($thead_ths[0]->id, 'title');
-        $this->assertEquals($thead_ths[1]->id, 'actions');
+        $this->assertEquals($thead_ths[0]->id, 'symbol');
+        $this->assertEquals($thead_ths[1]->id, 'title');
+        $this->assertEquals($thead_ths[2]->id, 'actions');
         $column_count = count($thead_ths);
-        $this->assertEquals($column_count,2); // no other columns
+        $this->assertEquals($column_count,3); // no other columns
 
         // 6. Ensure that the tbody section has the same
         //    quantity of rows as the count of tradeable records in the fixture.
@@ -187,11 +197,14 @@ class TradeablesControllerTest extends DMIntegrationTestCase {
             $htmlRow = $values[1];
             $htmlColumns = $htmlRow->find('td');
 
-            // 7.0 title
-            $this->assertEquals($fixtureRecord['title'],  $htmlColumns[0]->plaintext);
+            // 7.0 symbol
+            $this->assertEquals($fixtureRecord['symbol'],  $htmlColumns[0]->plaintext);
 
-            // 7.1 Now examine the action links
-            $td = $htmlColumns[1];
+            // 7.1 title
+            $this->assertEquals($fixtureRecord['title'],  $htmlColumns[1]->plaintext);
+
+            // 7.2 Now examine the action links
+            $td = $htmlColumns[2];
             $actionLinks = $td->find('a');
             $this->assertEquals('TradeableView', $actionLinks[0]->name);
             $unknownATag--;
@@ -248,7 +261,12 @@ class TradeablesControllerTest extends DMIntegrationTestCase {
         // This is the count of the table rows that are presently unaccounted for.
         $unknownRowCnt = count($table->find('tr'));
 
-        // 4.1 title
+        // 4.1 symbol
+        $field = $table->find('tr#symbol td',0);
+        $this->assertEquals($tradeable['symbol'], $field->plaintext);
+        $unknownRowCnt--;
+
+        // 4.2 title
         $field = $table->find('tr#title td',0);
         $this->assertEquals($tradeable['title'], $field->plaintext);
         $unknownRowCnt--;

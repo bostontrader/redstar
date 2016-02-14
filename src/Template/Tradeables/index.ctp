@@ -15,6 +15,7 @@
         <table id="TradeablesTable" cellpadding="0" cellspacing="0">
             <thead>
                 <tr>
+                    <th id="symbol" ><?= __('Symbol') ?></th>
                     <th id="title" ><?= __('Title') ?></th>
                     <th id="actions" class="actions"><?= __('Actions') ?></th>
                 </tr>
@@ -22,6 +23,7 @@
             <tbody>
                 <?php foreach ($tradeables as $tradeable): ?>
                 <tr>
+                    <td><?= $tradeable->symbol ?></td>
                     <td><?= $tradeable->title ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', 'id'=>$tradeable->id, '_method'=>'GET'],['name'=>'TradeableView']) ?>
