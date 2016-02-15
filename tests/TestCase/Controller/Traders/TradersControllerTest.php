@@ -227,10 +227,8 @@ class TradersControllerTest extends DMIntegrationTestCase {
         $unknownATag = count($content->find('a'));
 
         // 2.2 Look for specific tags
-        //$this->assertEquals(1, count($html->find('a#TraderAccounts')));
-        //$unknownATag--;
-        //$this->assertEquals(1, count($html->find('a#TraderTransactions')));
-        //$unknownATag--;
+        $this->assertEquals(1, count($html->find('a#TraderBalanceSheet')));
+        $unknownATag--;
 
         // 2.3. Ensure that all the <A> tags have been accounted for
         $this->assertEquals(0, $unknownATag);

@@ -24,6 +24,27 @@ class TradersController extends AppController {
         return null;
     }
 
+    public function balance($id = null) {
+        $this->request->allowMethod(['get']);
+        $trader = $this->Traders->get($id);
+
+        /* @var \Cake\Database\Connection $connection */
+        //$connection = ConnectionManager::get('default');
+        //$query="select categories.title as ct, accounts.title as at, sum(distributions.amount * distributions.drcr) as amount
+            //from distributions
+            //left join transactions on distributions.transaction_id=transactions.id
+            //left join traders on transactions.trader_id=traders.id
+            //left join accounts on distributions.account_id=accounts.id
+            //left join categories on accounts.category_id=categories.id
+            //where traders.id=$id
+            //and categories.id in (1,2,3)
+            //group by accounts.id";
+        //$lineItems=$connection->execute($query)->fetchAll('assoc');
+
+        $lineItems=[];
+        $this->set(compact('trader','lineItems'));
+    }
+
     //public function delete($id = null) {
         //$this->request->allowMethod(['post', 'delete']);
         //$trader = $this->Traders->get($id);
