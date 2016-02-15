@@ -54,6 +54,9 @@ class TradersControllerTest extends DMIntegrationTestCase {
         // 3.3 Ensure that there's an input field for nickname, of type text, and that it is empty
         if($this->inputCheckerA($form,'input#TraderNickname')) $unknownInputCnt--;
 
+        // 3.4 Ensure that there's an input field for acctwerx_book_id, of type text, and that it is empty
+        if($this->inputCheckerA($form,'input#TraderAcctwerxBookId')) $unknownInputCnt--;
+
         // 4. Have all the input, select, and Atags been accounted for?
         $this->expectedInputsSelectsAtagsFound($unknownInputCnt, $unknownSelectCnt, $html, 'div#TradersAdd');
     }
@@ -71,6 +74,7 @@ class TradersControllerTest extends DMIntegrationTestCase {
 
         // 2. Now validate that record.
         $this->assertEquals($fromDbRecord['nickname'],$fixtureRecord['nickname']);
+        $this->assertEquals($fromDbRecord['acctwerx_book_id'],$fixtureRecord['acctwerx_book_id']);
     }
 
     //public function testDELETE() {
@@ -113,6 +117,10 @@ class TradersControllerTest extends DMIntegrationTestCase {
         if($this->inputCheckerA($form,'input#TraderNickname',
             $trader['nickname'])) $unknownInputCnt--;
 
+        // 3.4 Ensure that there's an input field for acctwerx_book_id, of type text, that is correctly set
+        if($this->inputCheckerA($form,'input#TraderAcctwerxBookId',
+            $trader['acctwerx_book_id'])) $unknownInputCnt--;
+
         // 4. Have all the input, select, and Atags been accounted for?
         $this->expectedInputsSelectsAtagsFound($unknownInputCnt, $unknownSelectCnt, $html, 'div#TradersEdit');
     }
@@ -132,6 +140,7 @@ class TradersControllerTest extends DMIntegrationTestCase {
 
         // 2. Now validate that record.
         $this->assertEquals($fromDbRecord['nickname'],$fixtureRecord['nickname']);
+        $this->assertEquals($fromDbRecord['acctwerx_book_id'],$fixtureRecord['acctwerx_book_id']);
     }
 
     public function testGET_index() {
@@ -165,9 +174,10 @@ class TradersControllerTest extends DMIntegrationTestCase {
         $thead_ths = $thead->find('tr th');
 
         $this->assertEquals($thead_ths[0]->id, 'nickname');
-        $this->assertEquals($thead_ths[1]->id, 'actions');
+        $this->assertEquals($thead_ths[1]->id, 'acctwerx_book_id');
+        $this->assertEquals($thead_ths[2]->id, 'actions');
         $column_count = count($thead_ths);
-        $this->assertEquals($column_count,2); // no other columns
+        $this->assertEquals($column_count,3); // no other columns
 
         // 6. Ensure that the tbody section has the same
         //    quantity of rows as the count of trader records in the fixture.
@@ -190,8 +200,11 @@ class TradersControllerTest extends DMIntegrationTestCase {
             // 7.0 nickname
             $this->assertEquals($fixtureRecord['nickname'],  $htmlColumns[0]->plaintext);
 
-            // 7.1 Now examine the action links
-            $td = $htmlColumns[1];
+            // 7.1 acctwerx_book_id
+            $this->assertEquals($fixtureRecord['acctwerx_book_id'],  $htmlColumns[1]->plaintext);
+
+            // 7.2 Now examine the action links
+            $td = $htmlColumns[2];
             $actionLinks = $td->find('a');
             $this->assertEquals('TraderView', $actionLinks[0]->name);
             $unknownATag--;
@@ -249,6 +262,11 @@ class TradersControllerTest extends DMIntegrationTestCase {
         // 4.1 nickname
         $field = $table->find('tr#nickname td',0);
         $this->assertEquals($trader['nickname'], $field->plaintext);
+        $unknownRowCnt--;
+
+        // 4.1 acctwerx_book_id
+        $field = $table->find('tr#acctwerx_book_id td',0);
+        $this->assertEquals($trader['acctwerx_book_id'], $field->plaintext);
         $unknownRowCnt--;
 
         // 4.9 Have all the rows been accounted for?  Are there any extras?

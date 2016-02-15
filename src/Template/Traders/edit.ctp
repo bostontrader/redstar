@@ -12,6 +12,7 @@
             <legend><?= __('Edit Trader') ?></legend>
             <?php
                 echo $this->Form->input('nickname',['id'=>'TraderNickname']);
+                echo $this->Form->input('acctwerx_book_id',['id'=>'TraderAcctwerxBookId','type'=>'text']);
             ?>
         </fieldset>
         <?= $this->Form->button(__('Submit')) ?>

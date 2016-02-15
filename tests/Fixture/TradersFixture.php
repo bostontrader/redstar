@@ -5,7 +5,7 @@ class TradersFixture extends DMFixture {
     public $import = ['table' => 'traders'];
 
     // This record will be added during a test.  We don't need or want to control the id here, so omit it.
-    public $newTraderRecord = ['nickname' => 'batman'];
+    public $newTraderRecord = ['nickname' => 'batman','acctwerx_book_id' => 0];
 
     public function init() {
         $this->tableName='Traders';

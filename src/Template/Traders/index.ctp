@@ -17,6 +17,7 @@ $this->Breadcrumb->makeTrail('Traders',$this->Html);
             <thead>
                 <tr>
                     <th id="nickname" ><?= __('Nickname') ?></th>
+                    <th id="acctwerx_book_id" ><?= __('Acctwerx Book Id') ?></th>
                     <th id="actions" class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -24,6 +25,7 @@ $this->Breadcrumb->makeTrail('Traders',$this->Html);
                 <?php foreach ($traders as $trader): ?>
                 <tr>
                     <td><?= $trader->nickname ?></td>
+                    <td><?= $trader->acctwerx_book_id ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', 'id'=>$trader->id, '_method'=>'GET'],['name'=>'TraderView']) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit',$trader->id],['name'=>'TraderEdit']) ?>

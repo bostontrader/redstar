@@ -16,6 +16,10 @@ $this->Breadcrumb->makeTrail($trader->nickname,$this->Html);
                 <th><?= __('Nickname') ?></th>
                 <td><?= $trader->nickname ?></td>
             </tr>
+            <tr id="acctwerx_book_id">
+                <th><?= __('Acctwerx Book Id') ?></th>
+                <td><?= $trader->acctwerx_book_id ?></td>
+            </tr>
         </table>
     </div>
 </div>
