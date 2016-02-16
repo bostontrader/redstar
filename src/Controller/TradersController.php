@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+use Cake\Network\Http\Client;
 
 class TradersController extends AppController {
 
@@ -28,21 +29,14 @@ class TradersController extends AppController {
         $this->request->allowMethod(['get']);
         $trader = $this->Traders->get($id);
 
-        /* @var \Cake\Database\Connection $connection */
-        //$connection = ConnectionManager::get('default');
-        //$query="select categories.title as ct, accounts.title as at, sum(distributions.amount * distributions.drcr) as amount
-            //from distributions
-            //left join transactions on distributions.transaction_id=transactions.id
-            //left join traders on transactions.trader_id=traders.id
-            //left join accounts on distributions.account_id=accounts.id
-            //left join categories on accounts.category_id=categories.id
-            //where traders.id=$id
-            //and categories.id in (1,2,3)
-            //group by accounts.id";
-        //$lineItems=$connection->execute($query)->fetchAll('assoc');
+        $http = new Client();
+        $acctwerx_book_id=$trader['acctwerx_book_id'];
+        $response = $http->get("http://localhost/acctwerx/books/balance/$acctwerx_book_id.json");
+        // look for response code 200 or 404
+        $lineItems=json_decode($response->body)->lineItems;
 
-        $lineItems=[];
         $this->set(compact('trader','lineItems'));
+
     }
 
     //public function delete($id = null) {
