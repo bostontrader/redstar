@@ -6,6 +6,7 @@ $this->Breadcrumb->makeTrail($trader->nickname,$this->Html);
     <nav class="large-3 medium-4 columns" id="actions-sidebar">
         <ul class="side-nav">
             <li class="heading"><?= __('Actions') ?></li>
+            <li><?= $this->Html->link(__('Deposit'), ['action'=>'deposit',$trader->id, '_method'=>'GET'], ['id'=>'TraderDeposit']) ?></li>
             <li><?= $this->Html->link(__('Balance Sheet'), ['action'=>'balance',$trader->id, '_method'=>'GET'], ['id'=>'TraderBalanceSheet']) ?></li>
         </ul>
     </nav>

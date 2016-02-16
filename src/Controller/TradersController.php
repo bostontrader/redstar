@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 use Cake\Network\Http\Client;
+use Cake\ORM\TableRegistry;
 
 class TradersController extends AppController {
 
@@ -49,6 +50,27 @@ class TradersController extends AppController {
         //}
         //return $this->redirect(['action' => 'index']);
     //}
+
+    public function deposit($id = null) {
+        $this->request->allowMethod(['get','post']);
+        //$trader = $this->Traders->get($id);
+
+        //$trader = $this->Traders->newEntity();
+        if ($this->request->is('post')) {
+            //$trader = $this->Traders->patchEntity($trader, $this->request->data);
+            //if ($this->Traders->save($trader)) {
+                //$this->Flash->success(__(self::TRADER_SAVED));
+                return $this->redirect(['controller'=>'traders','action' => 'view','_method'=>'GET','id'=>$id]);
+            //} else {
+                //$this->Flash->error(__(self::TRADER_NOT_SAVED));
+            //}
+        }
+
+        $tradeables = TableRegistry::get('Tradeables')->find('list');
+        $trader_id=$id;
+        $this->set(compact('tradeables','trader_id'));
+        return null;
+    }
 
     public function edit($id = null) {
         $this->request->allowMethod(['get', 'put']);
