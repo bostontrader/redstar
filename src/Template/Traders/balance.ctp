@@ -19,14 +19,16 @@ $this->Breadcrumb->makeTrail('Balance Sheet',$this->Html);
                 <th id="category" ><?= __('Category') ?></th>
                 <th id="account" ><?= __('Account') ?></th>
                 <th id="amount" ><?= __('Amount') ?></th>
+                <th id="amount" ><?= __('Symbol') ?></th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($lineItems as $lineItem): ?>
                 <tr>
-                    <td><?= $lineItem['ct'] ?></td>
-                    <td><?= $lineItem['at'] ?></td>
-                    <td><?= $lineItem['amount'] ?></td>
+                    <td><?= $lineItem->ct ?></td>
+                    <td><?= $lineItem->at ?></td>
+                    <td><?= $lineItem->amount ?></td>
+                    <td><?= $lineItem->symbol ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

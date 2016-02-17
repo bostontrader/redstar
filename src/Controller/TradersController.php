@@ -57,6 +57,20 @@ class TradersController extends AppController {
 
         //$trader = $this->Traders->newEntity();
         if ($this->request->is('post')) {
+
+            $http = new Client();
+            //$acctwerx_book_id=$trader['acctwerx_book_id'];
+            $j="{
+  \"datetime\": \"2016-01-17\",
+  \"array\": [
+    {\"drcr\":1,\"account_id\":1,\"currency_id\":1,\"quantity\":500.250},
+    {\"drcr\":-1,\"account_id\":2,\"currency_id\":2,\"quantity\":25}
+  ]
+
+}";
+            $response = $http->post("http://localhost/acctwerx/books/4/transactions/add.json",$j);
+            // look for response code 200 or 404
+
             //$trader = $this->Traders->patchEntity($trader, $this->request->data);
             //if ($this->Traders->save($trader)) {
                 //$this->Flash->success(__(self::TRADER_SAVED));
