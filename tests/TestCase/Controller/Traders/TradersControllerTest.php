@@ -77,6 +77,16 @@ class TradersControllerTest extends DMIntegrationTestCase {
         $this->assertEquals($fromDbRecord['acctwerx_book_id'],$fixtureRecord['acctwerx_book_id']);
     }
 
+    public function testGET_balance() {
+
+        $trader_id=FixtureConstants::traderTypical;
+        $this->get('/traders/balance/'.$trader_id);
+        $this->assertResponseCode(200);
+        $this->assertNoRedirect();
+
+        // Shall we test the content and calculations of the BS?
+    }
+
     //public function testDELETE() {
         //$this->deletePOST(
             //null, // no login

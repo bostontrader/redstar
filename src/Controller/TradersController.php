@@ -32,12 +32,11 @@ class TradersController extends AppController {
 
         $http = new Client();
         $acctwerx_book_id=$trader['acctwerx_book_id'];
+        // Don't want this hard-wired here.  Move it!
         $response = $http->get("http://localhost/acctwerx/books/balance/$acctwerx_book_id.json");
         // look for response code 200 or 404
         $lineItems=json_decode($response->body)->lineItems;
-
         $this->set(compact('trader','lineItems'));
-
     }
 
     //public function delete($id = null) {
@@ -53,21 +52,24 @@ class TradersController extends AppController {
 
     public function deposit($id = null) {
         $this->request->allowMethod(['get','post']);
-        //$trader = $this->Traders->get($id);
-
+        $trader = $this->Traders->get($id);
+        $acctwerx_book_id=$trader['acctwerx_book_id'];
         //$trader = $this->Traders->newEntity();
         if ($this->request->is('post')) {
 
             $http = new Client();
             //$acctwerx_book_id=$trader['acctwerx_book_id'];
-            $j="{
-  \"datetime\": \"2016-01-17\",
-  \"array\": [
-    {\"drcr\":1,\"account_id\":1,\"currency_id\":1,\"quantity\":500.250},
-    {\"drcr\":-1,\"account_id\":2,\"currency_id\":2,\"quantity\":25}
-  ]
 
-}";
+            // An ugly hardwired example transaction
+            $j="{
+              \"datetime\": \"2016-01-17\",
+              \"note\": \"first transactions\",
+              \"book_id\": \"$acctwerx_book_id\",
+              \"distributions\": [
+                {\"drcr\":1,\"account_id\":1,\"currency_id\":1,\"amount\":500.250},
+                {\"drcr\":-1,\"account_id\":2,\"currency_id\":2,\"amount\":25}
+              ]
+            }";
             $response = $http->post("http://localhost/acctwerx/books/4/transactions/add.json",$j);
             // look for response code 200 or 404
 
