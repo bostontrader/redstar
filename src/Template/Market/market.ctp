@@ -15,15 +15,15 @@
         <table id="SidesTable" cellpadding="0" cellspacing="0">
             <thead>
                 <tr>
-                    <th id="quantity" ><?= __('Quantity') ?></th>
+                    <th id="quantity" ><?= __('Have Quantity') ?></th>
                     <th id="unit_price" ><?= __('Unit Price') ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($sellSides as $order): ?>
                 <tr>
-                    <td><?= $this->Number->precision($order['have_quantity'],2); ?></td>
-                    <td><?= $this->Number->precision($order['want_quantity']/$order['have_quantity'],3);  ?></td>
+                    <td><?= $this->Number->precision($order['hq'],2); ?></td>
+                    <td><?= $this->Number->precision($order['up'],3);  ?></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -32,15 +32,15 @@
         <table id="SidesTable" cellpadding="0" cellspacing="0">
             <thead>
             <tr>
-                <th id="quantity" ><?= __('Quantity') ?></th>
+                <th id="quantity" ><?= __('Want Quantity') ?></th>
                 <th id="unit_price" ><?= __('Unit Price') ?></th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($buySides as $order): ?>
                 <tr>
-                    <td><?= $this->Number->precision($order['want_quantity'],2); ?></td>
-                    <td><?= $this->Number->precision($order['have_quantity']/$order['want_quantity'],3);  ?></td>
+                    <td><?= $this->Number->precision($order['wq'],2); ?></td>
+                    <td><?= $this->Number->precision($order['up'],3);  ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
