@@ -1,0 +1,40 @@
+{
+  "author": {
+    "name": "Thomas Radloff",
+    "email": "bostontrader@gmail.com",
+    "url": "https://github.com/bostontrader"
+  },
+  "bugs": {
+    "url": "https://github.com/bostontrader/redstar/issues"
+  },
+  "description": "A currency exchange.",
+  "devDependencies": {
+    "standard": "7.1.2"
+  },
+  "dependencies": {
+    "body-parser": "1.15.2",
+    "bootstrap": "3.3.7",
+    "config": "1.21.0",
+    "express": "4.14.0",
+    "pug": "2.0.0-beta6",
+    "request": "2.74.0"
+  },
+  "keywords": [
+    "currency-exchange",
+    "bookwerx",
+    "express",
+    "multi-currency",
+    "node"
+  ],
+  "license": "MIT",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bostontrader/redstar.git"
+  },
+  "scripts": {
+    "lint": "standard"
+  },
+  "name": "redstar",
+  "version": "0.1.0"
+}
