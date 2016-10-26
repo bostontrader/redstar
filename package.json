@@ -5,36 +5,32 @@
     "url": "https://github.com/bostontrader"
   },
   "bugs": {
-    "url": "https://github.com/bostontrader/redstar/issues"
+    "url": "https://github.com/bostontrader/redstar-server/issues"
   },
-  "description": "A currency exchange.",
+  "description": "A server to support a currency exchange.",
   "devDependencies": {
     "standard": "7.1.2"
   },
   "dependencies": {
-    "body-parser": "1.15.2",
-    "bootstrap": "3.3.7",
     "config": "1.21.0",
-    "express": "4.14.0",
-    "pug": "2.0.0-beta6",
-    "request": "2.74.0"
+    "restify": "4.1.1"
   },
   "keywords": [
     "currency-exchange",
     "bookwerx",
-    "express",
-    "multi-currency",
-    "node"
+    "multi-currency"
   ],
   "license": "MIT",
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bostontrader/redstar.git"
+    "url": "https://github.com/bostontrader/redstar-server.git"
   },
   "scripts": {
-    "lint": "standard"
+    "lint": "standard",
+    "start": "node ./app/server.js",
+    "test": "node ./app/server_test.js"
   },
   "name": "redstar",
-  "version": "0.1.0"
+  "version": "0.2.0"
 }

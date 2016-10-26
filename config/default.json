@@ -1,5 +1,5 @@
 {
   "configName": "default",
-  "bookwerx_coreURL": "http://localhost:3003",
-  "port":3008
+  "listenOnPort":3007,
+  "enableTest": true
 }
